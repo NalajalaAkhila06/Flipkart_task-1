@@ -1,0 +1,97 @@
+<div class="pagination">
+    {% if pagination.has_prev %}
+        <a href="{{ url_for(request.endpoint, page=pagination.prev_num, **request.args) }}" class="pagination-link pagination-prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+    {% else %}
+        <span class="pagination-link pagination-disabled">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+    {% endif %}
+
+    {% for page_num in pagination.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+        {% if page_num %}
+            {% if page_num == pagination.page %}
+                <span class="pagination-link pagination-active">{{ page_num }}</span>
+            {% else %}
+                <a href="{{ url_for(request.endpoint, page=page_num, **request.args) }}" class="pagination-link">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+            <span class="pagination-ellipsis">...</span>
+        {% endif %}
+    {% endfor %}
+
+    {% if pagination.has_next %}
+        <a href="{{ url_for(request.endpoint, page=pagination.next_num, **request.args) }}" class="pagination-link pagination-next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    {% else %}
+        <span class="pagination-link pagination-disabled">
+            <i class="fas fa-chevron-right"></i>
+        </span>
+    {% endif %}
+</div>
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .pagination-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background: #ffffff;
+        color: #43eeac;
+        text-decoration: none;
+        font-weight: 500;
+        border: 1px solid #f0e2ec;
+        transition: all 0.2s ease;
+    }
+
+    .pagination-link:hover {
+        background: #f9f1f7;
+        border-color: #dbe0cb;
+    }
+
+    .pagination-active {
+        background: #ee4354;
+        color: white;
+        border-color: #43ee6b;
+    }
+
+    .pagination-disabled {
+        color: #e0e0cb;
+        cursor: not-allowed;
+    }
+
+    .pagination-ellipsis {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        color: #719096;
+    }
+
+    @media (max-width: 480px) {
+        .pagination {
+            gap: 3px;
+        }
+        
+        .pagination-link,
+        .pagination-ellipsis {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+        }
+    }
+</style>
