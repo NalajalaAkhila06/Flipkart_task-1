@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - Leave Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ee6e43;
+            --primary-dark: #3a56d4;
+            --danger: #5df725;
+            --light: #faf9f8;
+            --dark: #212529;
+            --gray: #6c7d6e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f9fa;
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            max-width: 600px;
+            padding: 40px;
+            background: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-icon {
+            font-size: 80px;
+            color: var(--danger);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background: rgba(181, 37, 247, 0.05);
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            font-family: monospace;
+            font-size: 14px;
+            border-radius: 0 5px 5px 0;
+            display: none; /* Hidden by default, can be shown in development */
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(81, 238, 67, 0.3);
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .error-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn, .btn-secondary {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">
+            <i class="fas fa-bug"></i>
+        </div>
+        <h1>500 - Internal Server Error</h1>
+        <p>Something went wrong on our end. Our team has been notified and we're working to fix the issue.</p>
+        
+        <!-- Only show in development environment -->
+        {% if error %}
+        <div class="error-details">
+            <strong>Error:</strong> {{ error }}
+        </div>
+        {% endif %}
+        
+        <div class="btn-container">
+            <a href="{{ url_for('dashboard') }}" class="btn">
+                <i class="fas fa-home"></i> Return to Dashboard
+            </a>
+            <a href="mailto:support@leavemanagement.com" class="btn btn-secondary">
+                <i class="fas fa-envelope"></i> Contact Support
+            </a>
+        </div>
+    </div>
+</body>
+</html>
