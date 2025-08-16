@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar (same as dashboard) */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #2b2d42 0%, #1a1a2e 100%);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+        }
+
+        /* Top Navigation (same as dashboard) */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 30px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--light-gray);
+            border-radius: 30px;
+            padding: 8px 15px;
+            width: 300px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 5px 10px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-bar i {
+            color: var(--gray);
+        }
+
+        /* Users Table */
+        .users-table-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th {
+            text-align: left;
+            padding: 15px;
+            background: var(--light);
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .users-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .users-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .users-table tr:hover {
+            background: rgba(67, 97, 238, 0.03);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        .user-email {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .role-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .role-badge.admin {
+            background: rgba(114, 9, 183, 0.1);
+            color: #7209b7;
+        }
+
+        .role-badge.manager {
+            background: rgba(72, 149, 239, 0.1);
+            color: #4895ef;
+        }
+
+        .role-badge.employee {
+            background: rgba(76, 201, 240, 0.1);
+            color: #4cc9f0;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .status-badge.active {
+            background: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+
+        .status-badge.inactive {
+            background: rgba(108, 117, 125, 0.1);
+            color: var(--gray);
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .action-btn.edit {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .action-btn.edit:hover {
+            background: rgba(67, 97, 238, 0.2);
+        }
+
+        .action-btn.delete {
+            background: rgba(247, 37, 133, 0.1);
+            color: var(--danger);
+            margin-left: 5px;
+        }
+
+        .action-btn.delete:hover {
+            background: rgba(247, 37, 133, 0.2);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--dark);
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background: var(--light);
+        }
+
+        .pagination a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+                overflow: hidden;
+            }
+
+            .main-content {
+                margin-left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .users-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar (same as dashboard) -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://ui-avatars.com/api/?name={{ current_user.first_name }}+{{ current_user.last_name }}&background=random" alt="User">
+                <div>
+                    <h3>{{ current_user.first_name }} {{ current_user.last_name }}</h3>
+                    <p>{{ current_user.role.value|capitalize }}</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-menu">
+                <h4>Menu</h4>
+                <ul>
+                    <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ url_for('leave_requests') }}"><i class="fas fa-calendar-alt"></i> <span>Leave Requests</span></a></li>
+                    {% if current_user.role in ['admin', 'manager'] %}
+                    <li><a href="{{ url_for('reports') }}"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+                    {% endif %}
+                    {% if current_user.role == 'admin' %}
+                    <li><a href="{{ url_for('users') }}" class="active"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('profile') }}"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation (same as dashboard) -->
+            <div class="top-nav">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                
+                <div class="user-actions">
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name={{ current_user.first_name }}+{{ current_user.last_name }}&background=random" alt="User">
+                        <p>{{ current_user.first_name }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="page-header">
+                    <h1>User Management</h1>
+                    <a href="{{ url_for('new_user') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New User
+                    </a>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search users...">
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="users-table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users.items %}
+                            <tr>
+                                <td>
+                                    <div class="user-info">
+                                        <img src="https://ui-avatars.com/api/?name={{ user.first_name }}+{{ user.last_name }}&background=random" alt="User">
+                                        <div>
+                                            <div class="user-name">{{ user.first_name }} {{ user.last_name }}</div>
+                                            <div class="user-email">{{ user.email }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="role-badge {{ user.role.value }}">
+                                        {{ user.role.value|capitalize }}
+                                    </span>
+                                </td>
+                                <td>{{ user.department or '-' }}</td>
+                                <td>
+                                    <span class="status-badge {% if user.is_active %}active{% else %}inactive{% endif %}">
+                                        {% if user.is_active %}Active{% else %}Inactive{% endif %}
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="#" class="action-btn edit">Edit</a>
+                                    <a href="#" class="action-btn delete">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    {% if users.has_prev %}
+                        <a href="{{ url_for('users', page=users.prev_num) }}">&laquo;</a>
+                    {% endif %}
+                    
+                    {% for page_num in users.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                        {% if page_num %}
+                            <a href="{{ url_for('users', page=page_num) }}" 
+                               {% if page_num == users.page %}class="active"{% endif %}>
+                                {{ page_num }}
+                            </a>
+                        {% else %}
+                            <span class="ellipsis">...</span>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if users.has_next %}
+                        <a href="{{ url_for('users', page=users.next_num) }}">&raquo;</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
