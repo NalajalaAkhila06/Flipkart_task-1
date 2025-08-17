@@ -140,7 +140,7 @@ leave-management-system/
 
 
 - ### Admin_Dashboard
-<img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/admin_dashboard.png?raw=true"/>
+<img width="1912" height="939" alt="Screenshot 2025-08-16 222659" src="https://github.com/user-attachments/assets/72e12853-3413-4bd7-bba3-ad9048ece2c3" />
 
 - ### Admin_Profile
 
