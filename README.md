@@ -136,35 +136,62 @@ leave-management-system/
 ## Screenshots
 
 - ### Login Page
-<img width="1600" height="700" alt="Login_Image" src="https://github.com/malini-30/flipkart_project1/blob/main/login.png?raw=true"/>
+<img width="1898" height="940" alt="Screenshot 2025-08-16 220609" src="https://github.com/user-attachments/assets/75426ffd-8d03-424b-b31e-0f5014735b2b" />
+
 
 - ### Admin_Dashboard
 <img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/admin_dashboard.png?raw=true"/>
 
 - ### Admin_Profile
-<img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/admin_profile.png?raw=true"/>
+
+<img width="1319" height="640" alt="Screenshot 2025-08-16 223318" src="https://github.com/user-attachments/assets/4ec73697-4a84-4296-b545-09ca56218896" />
 
 - ### Admin_Reports
-<img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/admin_reports.png?raw=true"/>
+<img width="1910" height="899" alt="Screenshot 2025-08-16 223454" src="https://github.com/user-attachments/assets/0ede6c42-efc6-4092-867e-2e0055985c8a" />
 
+ ### Admin Quick reports
+ <img width="1916" height="931" alt="Screenshot 2025-08-16 223629" src="https://github.com/user-attachments/assets/7ce1cd3c-83dd-4f38-87ab-566ca75dee0c" />
+
+### Total Users details
+<img width="1916" height="951" alt="Screenshot 2025-08-16 223834" src="https://github.com/user-attachments/assets/dd4be520-8548-4c53-a185-e9764883e4df" />
+
+### Admin logout
+<img width="1903" height="943" alt="Screenshot 2025-08-16 224107" src="https://github.com/user-attachments/assets/392f9c19-dd49-443a-b3a1-2fb7ce27bfda" />
+
+### Admin logged  out
+<img width="1889" height="899" alt="Screenshot 2025-08-16 224514" src="https://github.com/user-attachments/assets/c835e336-c694-4fbf-a516-017e23b4e7af" />
 
 - ### Manager Dashboard
-<img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/manager_dashboard.png?raw=true" />
+<img width="1913" height="902" alt="Screenshot 2025-08-16 224929" src="https://github.com/user-attachments/assets/bdc41458-54f4-4ef3-966e-4b845f1abaae" />
 
 - ### Manager Profile
-<img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/manager_profile.png?raw=true" />
+<img width="1916" height="895" alt="Screenshot 2025-08-16 225055" src="https://github.com/user-attachments/assets/6d3c28f6-94ec-419c-b75f-39e71538e239" />
+
 
 - ### Manager_Reports
-  <img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/manager_reports.png?raw=true"/>
+ <img width="939" height="461" alt="image" src="https://github.com/user-attachments/assets/3f46d9fc-bbb9-45fe-a3e1-aeaad362f5f1" />
+
+### Manager Approved leave
+<img width="953" height="466" alt="image" src="https://github.com/user-attachments/assets/f0673aa5-8183-423f-bbb1-a0c540ce5245" />
+
+### Manager notifications
+<img width="1866" height="695" alt="Screenshot 2025-08-16 225353" src="https://github.com/user-attachments/assets/c052ee0b-7c64-4d5a-b3db-06d110eaefab" />
+
+### Manager  profile updated and logout
+<img width="1885" height="894" alt="Screenshot 2025-08-16 225454" src="https://github.com/user-attachments/assets/f2f1962a-a159-40d9-bad1-dcb6b7566f51" />
+
 
  - ### Employee Dashboard
-  <img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/employee_dashboard.png?raw=true"/>
+  <img width="1895" height="889" alt="Screenshot 2025-08-16 224608" src="https://github.com/user-attachments/assets/268fe733-866f-4039-a8bb-ff25afc0f09d" />
 
 - ### Employee Profile
-  <img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/employee_profile.png?raw=true"/>
+ <img width="1919" height="899" alt="Screenshot 2025-08-16 224757" src="https://github.com/user-attachments/assets/f4b7e86e-0838-414c-be6a-cbc3db2701ed" />
 
 - ### Employee Leave_Request
-    <img width="1600" height="700" alt="Image" src="https://github.com/malini-30/flipkart_project1/blob/main/employee_leave_request.png?raw=true"/>
+    <img width="959" height="450" alt="image" src="https://github.com/user-attachments/assets/cd4f943d-e30d-4be8-9860-2f569dc96ce1" />
+
+### Employee logout
+<img width="951" height="473" alt="image" src="https://github.com/user-attachments/assets/a1b8cf03-32a6-46ff-bc8f-d6623521ea05" />
 
     -----
 
